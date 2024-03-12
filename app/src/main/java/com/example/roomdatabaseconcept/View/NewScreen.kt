@@ -24,11 +24,11 @@ fun NewScreen(){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally){
         Spacer(modifier = Modifier.height(30.dp))
-        CustomTextField(placeholder = "Enter name")
+        CustomTextField(placeholder = "Enter first name")
+        Spacer(modifier = Modifier.height(10.dp))
+        CustomTextField(placeholder = "Enter last name")
         Spacer(modifier = Modifier.height(10.dp))
         CustomTextField(placeholder = "Enter age")
-        Spacer(modifier = Modifier.height(10.dp))
-        CustomTextField(placeholder = "Enter designation")
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {}) {
             Text("Update element")
