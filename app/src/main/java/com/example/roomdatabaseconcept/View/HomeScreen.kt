@@ -21,21 +21,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.roomdatabaseconcept.View.Components.CustomAppBar
 import com.example.roomdatabaseconcept.View.Components.CustomFloatingButton
 import com.example.roomdatabaseconcept.View.Components.DisplayCard
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Preview(showBackground = true)
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navHostController: NavHostController){
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
             .background(Color(0xFFEEEEEE))
     ){
-        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton()}, modifier = Modifier.navigationBarsPadding()) {
+        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton(navHostController)}, modifier = Modifier.navigationBarsPadding()) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ){

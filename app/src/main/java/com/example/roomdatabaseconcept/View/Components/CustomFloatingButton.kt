@@ -10,11 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 
-@Preview(showBackground = true)
 @Composable
-fun CustomFloatingButton(){
-    FloatingActionButton(onClick = { /*TODO*/ }, shape = CircleShape,
+fun CustomFloatingButton(navHostController: NavHostController){
+    FloatingActionButton(onClick = { navHostController.navigate("new screen") }, shape = CircleShape,
         containerColor = Color(0xFF000000)
     ) {
         Icon(imageVector = Icons.Filled.Add, contentDescription = "new screen",
