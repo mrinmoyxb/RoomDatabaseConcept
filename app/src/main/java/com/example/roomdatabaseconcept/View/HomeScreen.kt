@@ -1,26 +1,51 @@
 package com.example.roomdatabaseconcept.View
 
+import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.roomdatabaseconcept.View.Components.CustomAppBar
+import com.example.roomdatabaseconcept.View.Components.CustomFloatingButton
+import com.example.roomdatabaseconcept.View.Components.DisplayCard
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@Preview(showBackground = true)
 @Composable
 fun HomeScreen(){
     Column(
-        modifier = Modifier.fillMaxSize().padding(10.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)
+            .background(Color(0xFFEEEEEE))
     ){
-        Spacer(modifier = Modifier.height(20.dp))
-        Scaffold(topBar = {}) {
+        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton()}, modifier = Modifier.navigationBarsPadding()) {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ){
+                Spacer(modifier = Modifier.height(70.dp))
+                DisplayCard(1, "Alex", "Hawkings", "25")
+            }
 
         }
     }
 }
+
+
 
