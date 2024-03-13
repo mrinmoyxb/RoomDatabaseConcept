@@ -16,19 +16,26 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.asFlow
 import androidx.navigation.NavHostController
+import com.example.roomdatabaseconcept.Model.UserViewModel
 import com.example.roomdatabaseconcept.View.Components.CustomAppBar
 import com.example.roomdatabaseconcept.View.Components.CustomFloatingButton
 import com.example.roomdatabaseconcept.View.Components.DisplayCard
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navHostController: NavHostController){
+fun HomeScreen(navHostController: NavHostController, viewModel: UserViewModel){
+
+    val allUsers by viewModel.readAllData.asFlow().collectAsState(initial = emptyList())
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +48,7 @@ fun HomeScreen(navHostController: NavHostController){
                 modifier = Modifier.fillMaxSize()
             ){
                 Spacer(modifier = Modifier.height(70.dp))
-                //DisplayCard(1, "Alex", "Hawkings", 25)
+                DisplayCard(allUsers)
             }
 
         }

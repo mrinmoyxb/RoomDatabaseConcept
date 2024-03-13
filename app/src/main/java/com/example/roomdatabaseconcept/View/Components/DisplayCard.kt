@@ -14,23 +14,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.roomdatabaseconcept.Model.User
 import com.example.roomdatabaseconcept.Model.UserEvents
 import com.example.roomdatabaseconcept.Model.UserState
 
 @Composable
-fun DisplayCard(state: UserState, index: Int, onEvent: (UserEvents)-> Unit){
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .background(Color.Transparent)
-        .height(160.dp),
-        shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(Color.Black)
-    ) {
-        Column(modifier = Modifier.padding(10.dp)) {
-            Text(state.users[index].id.toString(), fontSize = 25.sp, color = Color.White)
-            Text(state.users[index].firstName, fontSize = 25.sp, color = Color.White)
-            Text(state.users[index].lastName, fontSize = 25.sp, color = Color.White)
-            Text(state.users[index].age.toString(), fontSize = 25.sp, color = Color.White)
+fun DisplayCard(users: List<User>){
+    users.forEach { user ->
+        Card(modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Transparent)
+            .height(160.dp),
+            shape = RoundedCornerShape(20.dp),
+            colors = CardDefaults.cardColors(Color.Black)
+        ) {
+            Column(modifier = Modifier.padding(10.dp)) {
+                Text(user.id.toString(), fontSize = 25.sp, color = Color.White)
+                Text(user.firstName, fontSize = 25.sp, color = Color.White)
+                Text(user.lastName, fontSize = 25.sp, color = Color.White)
+                Text(user.age.toString(), fontSize = 25.sp, color = Color.White)
+            }
         }
     }
+
 }

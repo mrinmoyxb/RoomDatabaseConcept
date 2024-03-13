@@ -1,6 +1,7 @@
 package com.example.roomdatabaseconcept.Model
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,5 +13,5 @@ interface UserDao {
     suspend fun addUser(user: User)
 
     @Query("SELECT *FROM user_table ORDER BY id ASC")
-    fun readAllData(): LiveData<List<User>>
+    fun readAllData(): MutableLiveData<List<User>>
 }

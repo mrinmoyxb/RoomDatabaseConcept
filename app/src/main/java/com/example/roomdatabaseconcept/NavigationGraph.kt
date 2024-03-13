@@ -16,7 +16,7 @@ fun MainScreen(){
     val navHostController = rememberNavController()
     NavHost(navController = navHostController, startDestination = "home screen"){
         composable(route = "home screen"){
-            HomeScreen(navHostController)
+            HomeScreen(navHostController, viewModel)
         }
         composable(route = "new screen"){
             NewScreen(viewModel)
