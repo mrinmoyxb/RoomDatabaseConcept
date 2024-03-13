@@ -31,7 +31,7 @@ fun NewScreen(){
         CustomTextField(placeholder = "Enter age")
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {}) {
-            Text("Update element")
+            Text("Add element")
         }
     }
 }

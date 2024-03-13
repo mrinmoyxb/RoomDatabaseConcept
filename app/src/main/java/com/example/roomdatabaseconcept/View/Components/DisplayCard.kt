@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.roomdatabaseconcept.Model.UserEvents
+import com.example.roomdatabaseconcept.Model.UserState
 
 @Composable
-fun DisplayCard(id: Int, firstName: String, lastName: String, age: String){
+fun DisplayCard(state: UserState, index: Int, onEvent: (UserEvents)-> Unit){
     Card(modifier = Modifier
         .fillMaxWidth()
         .background(Color.Transparent)
@@ -25,10 +27,10 @@ fun DisplayCard(id: Int, firstName: String, lastName: String, age: String){
         colors = CardDefaults.cardColors(Color.Black)
     ) {
         Column(modifier = Modifier.padding(10.dp)) {
-            Text("Id: $id", fontSize = 25.sp, color = Color.White)
-            Text(firstName, fontSize = 25.sp, color = Color.White)
-            Text(lastName, fontSize = 25.sp, color = Color.White)
-            Text(age, fontSize = 25.sp, color = Color.White)
+            Text(state.users[index].id.toString(), fontSize = 25.sp, color = Color.White)
+            Text(state.users[index].firstName, fontSize = 25.sp, color = Color.White)
+            Text(state.users[index].lastName, fontSize = 25.sp, color = Color.White)
+            Text(state.users[index].age.toString(), fontSize = 25.sp, color = Color.White)
         }
     }
 }
