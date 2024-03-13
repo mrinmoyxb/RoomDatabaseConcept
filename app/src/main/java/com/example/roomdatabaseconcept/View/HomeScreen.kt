@@ -35,12 +35,13 @@ fun HomeScreen(navHostController: NavHostController){
             .padding(10.dp)
             .background(Color(0xFFEEEEEE))
     ){
-        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton(navHostController)}, modifier = Modifier.navigationBarsPadding()) {
+        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton(navHostController)},
+            modifier = Modifier.navigationBarsPadding()) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ){
                 Spacer(modifier = Modifier.height(70.dp))
-                DisplayCard(1, "Alex", "Hawkings", "25")
+                //DisplayCard(1, "Alex", "Hawkings", 25)
             }
 
         }

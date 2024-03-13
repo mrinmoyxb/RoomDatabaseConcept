@@ -12,9 +12,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomTextField(placeholder: String){
+fun CustomTextField(placeholder: String): String{
     var textFieldValue by remember{ mutableStateOf("")}
     TextField(value = textFieldValue, onValueChange = {textFieldValue = it},
         placeholder = {Text(placeholder, fontSize = 18.sp, color = Color.Black)}
     )
+    return textFieldValue
 }

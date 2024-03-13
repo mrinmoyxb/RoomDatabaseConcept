@@ -8,27 +8,48 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.roomdatabaseconcept.View.Components.CustomTextField
 
 @Preview(showBackground = true)
 @Composable
 fun NewScreen(){
+    var firstName by remember{ mutableStateOf("") }
+    var lastName by remember{ mutableStateOf("") }
+    var age by remember{ mutableStateOf("") }
+
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(10.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally){
         Spacer(modifier = Modifier.height(30.dp))
-        CustomTextField(placeholder = "Enter first name")
+
+        TextField(value = firstName, onValueChange = {firstName = it},
+            placeholder = {Text("Enter your first name: ", fontSize = 18.sp, color = Color.Black)}
+        )
         Spacer(modifier = Modifier.height(10.dp))
-        CustomTextField(placeholder = "Enter last name")
+
+        TextField(value = lastName, onValueChange = {lastName = it},
+            placeholder = {Text("Enter your last name: ", fontSize = 18.sp, color = Color.Black)}
+        )
         Spacer(modifier = Modifier.height(10.dp))
-        CustomTextField(placeholder = "Enter age")
+
+        TextField(value = age, onValueChange = {age = it},
+            placeholder = {Text("Enter your age: ", fontSize = 18.sp, color = Color.Black)}
+        )
+
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {}) {
             Text("Add element")
