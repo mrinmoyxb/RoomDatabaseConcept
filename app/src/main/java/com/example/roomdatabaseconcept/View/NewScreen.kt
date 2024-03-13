@@ -20,14 +20,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.roomdatabaseconcept.Model.User
+import com.example.roomdatabaseconcept.Model.UserViewModel
 import com.example.roomdatabaseconcept.View.Components.CustomTextField
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun NewScreen(){
+fun NewScreen(viewModel: UserViewModel){
     var firstName by remember{ mutableStateOf("") }
     var lastName by remember{ mutableStateOf("") }
-    var age by remember{ mutableStateOf("") }
+    var age by remember{ mutableStateOf(0) }
+    var id: Int = 0
 
     Column(modifier = Modifier
         .fillMaxSize()
@@ -46,12 +49,20 @@ fun NewScreen(){
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        TextField(value = age, onValueChange = {age = it},
+        TextField(value = age.toString(), onValueChange = {age = it.toInt()},
             placeholder = {Text("Enter your age: ", fontSize = 18.sp, color = Color.Black)}
         )
 
         Spacer(modifier = Modifier.height(10.dp))
-        Button(onClick = {}) {
+        Button(onClick = {
+            val user = User(id, firstName = firstName, lastName = lastName, age = age)
+            viewModel.addUser(user)
+            firstName = ""
+            lastName = ""
+            age = 0
+        }
+
+        ) {
             Text("Add element")
         }
     }
