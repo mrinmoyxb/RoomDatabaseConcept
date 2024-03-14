@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -32,25 +34,25 @@ import com.example.roomdatabaseconcept.View.Components.DisplayCard
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navHostController: NavHostController, viewModel: UserViewModel){
+fun HomeScreen(navHostController: NavHostController, viewModel: UserViewModel) {
 
-    val allUsers by viewModel.readAllData.asFlow().collectAsState(initial = emptyList())
+    val users by viewModel.userList.collectAsState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
             .background(Color(0xFFEEEEEE))
-    ){
-        Scaffold(topBar = {CustomAppBar()}, floatingActionButton = {CustomFloatingButton(navHostController)},
-            modifier = Modifier.navigationBarsPadding()) {
-            Column(
-                modifier = Modifier.fillMaxSize()
-            ){
-                Spacer(modifier = Modifier.height(70.dp))
-                DisplayCard(allUsers)
+    ) {
+        Scaffold(topBar = { CustomAppBar() },
+            floatingActionButton = { CustomFloatingButton(navHostController) },
+            modifier = Modifier.navigationBarsPadding()
+        ) {
+            LazyColumn {
+                items(users) { user ->
+                    DisplayCard(user = user)
+                }
             }
-
         }
     }
 }

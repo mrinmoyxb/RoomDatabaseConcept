@@ -15,12 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roomdatabaseconcept.Model.User
-import com.example.roomdatabaseconcept.Model.UserEvents
-import com.example.roomdatabaseconcept.Model.UserState
 
 @Composable
-fun DisplayCard(users: List<User>){
-    users.forEach { user ->
+fun DisplayCard(user: User){
         Card(modifier = Modifier
             .fillMaxWidth()
             .background(Color.Transparent)
@@ -35,6 +32,4 @@ fun DisplayCard(users: List<User>){
                 Text(user.age.toString(), fontSize = 25.sp, color = Color.White)
             }
         }
-    }
-
 }

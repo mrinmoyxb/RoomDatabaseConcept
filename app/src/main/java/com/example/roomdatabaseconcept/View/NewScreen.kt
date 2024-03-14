@@ -29,7 +29,7 @@ import com.example.roomdatabaseconcept.View.Components.CustomTextField
 fun NewScreen(viewModel: UserViewModel){
     var firstName by remember{ mutableStateOf("") }
     var lastName by remember{ mutableStateOf("") }
-    var age by remember{ mutableStateOf(0) }
+    var age by remember{ mutableStateOf("0") }
     var id: Int = 0
 
     Column(modifier = Modifier
@@ -49,17 +49,16 @@ fun NewScreen(viewModel: UserViewModel){
         )
         Spacer(modifier = Modifier.height(10.dp))
 
-        TextField(value = age.toString(), onValueChange = {age = it.toInt()},
+        TextField(value = age, onValueChange = {age = it},
             placeholder = {Text("Enter your age: ", fontSize = 18.sp, color = Color.Black)}
         )
 
         Spacer(modifier = Modifier.height(10.dp))
         Button(onClick = {
-            val user = User(id, firstName = firstName, lastName = lastName, age = age)
-            viewModel.addUser(user)
+            viewModel.addUser(firstName = firstName, lastName = lastName, age = age.toInt())
             firstName = ""
             lastName = ""
-            age = 0
+            age = "0"
         }
 
         ) {
