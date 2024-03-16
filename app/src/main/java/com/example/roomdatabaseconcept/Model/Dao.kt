@@ -13,12 +13,12 @@ interface UserDao{
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
-    @Delete
-    suspend fun deleteUser(user: User)
+    @Query("DELETE FROM user WHERE id = :id")
+    suspend fun deleteUser(id: Int)
 
     @Query("SELECT *FROM user")
     fun getAllUsers(): Flow<List<User>>
 
-    @Query("SELECT *FROM user WHERE designation = :designation")
-    fun getAllUsersByDesignation(designation: String): Flow<List<User>>
+    @Query("SELECT *FROM user WHERE designation = 'developer'")
+    fun getAllUsersByDeveloper(): Flow<List<User>>
 }

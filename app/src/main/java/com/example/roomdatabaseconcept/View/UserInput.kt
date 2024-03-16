@@ -21,6 +21,7 @@ fun UserInput(viewModel: MainViewModel) {
 
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
+    var designation by remember { mutableStateOf("")}
 
     Column{
         Spacer(modifier = Modifier.height(50.dp))
@@ -35,9 +36,17 @@ fun UserInput(viewModel: MainViewModel) {
             onValueChange = { age = it },
             label = { Text("Age") }
         )
-        Button(onClick = { viewModel.saveUser(name, age.toInt())
+
+        OutlinedTextField(
+            value = designation,
+            onValueChange = { designation = it },
+            label = { Text("Designation") }
+        )
+
+        Button(onClick = { viewModel.saveUser(name, age.toInt(), designation)
             name = ""
             age = ""
+            designation = ""
         }) {
             Text("Save User")
         }

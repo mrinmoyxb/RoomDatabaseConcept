@@ -17,4 +17,12 @@ class MainViewModel(private val userDao: UserDao) : ViewModel() {
 
     var getUsers: Flow<List<User>> = userDao.getAllUsers()
 
+    var getUsersByDesignation: Flow<List<User>>  = userDao.getAllUsersByDeveloper()
+
+    fun deleteUSer(id: Int){
+        viewModelScope.launch{
+            userDao.deleteUser(id)
+        }
+    }
+
 }

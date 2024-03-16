@@ -19,16 +19,16 @@ import androidx.compose.ui.unit.sp
 import com.example.roomdatabase.Model.User
 
 @Composable
-fun UserList(userList: List<User>) {
+fun DesignationList(userList: List<User>) {
     Column {
-        Text("Users List")
+        Text("Developers List")
         userList.forEach { user ->
             Card(
                 modifier = Modifier.fillMaxWidth()
                     .height(110.dp).background(Color.Transparent)
             ) {
                 Box(
-                    modifier = Modifier.fillMaxSize().background(Color.Black).padding(10.dp)
+                    modifier = Modifier.fillMaxSize().background(Color.Blue).padding(10.dp)
                 ) {
                     Column(modifier = Modifier.fillMaxSize()) {
                         Text(text = "Name: ${user.name}", fontWeight = FontWeight.Medium, color = Color.White, fontSize = 20.sp)

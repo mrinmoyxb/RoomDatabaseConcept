@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.roomdatabaseconcept.Model.AppDatabase
+import com.example.roomdatabaseconcept.View.DesignationList
 import com.example.roomdatabaseconcept.View.UserInput
 import com.example.roomdatabaseconcept.View.UserList
 import com.example.roomdatabaseconcept.ViewModel.MainViewModel
@@ -23,20 +24,19 @@ fun MainScreen() {
     val context = LocalContext.current
     val viewModel = MainViewModel(AppDatabase.getInstance(context).userDao())
     val userList = viewModel.getUsers.collectAsState(emptyList())
+    val userListOfDevelopers = viewModel.getUsersByDesignation.collectAsState(emptyList())
 
-    Column(modifier = Modifier
+    LazyColumn(modifier = Modifier
         .fillMaxSize()
         .padding(10.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally)
     {
-        Spacer(modifier = Modifier.height(50.dp))
-        UserInput(viewModel = viewModel)
-        Spacer(modifier = Modifier.height(20.dp))
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            item {
-                UserList(userList = userList.value)
-            }
+        item{
+            UserInput(viewModel = viewModel)
+            UserList(userList = userList.value)
+            DesignationList(userList = userListOfDevelopers.value)
         }
+    
     }
 }
