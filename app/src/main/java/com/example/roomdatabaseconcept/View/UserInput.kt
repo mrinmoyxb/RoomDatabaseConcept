@@ -1,7 +1,10 @@
 package com.example.roomdatabaseconcept.View
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -42,7 +45,9 @@ fun UserInput(viewModel: MainViewModel) {
             onValueChange = { designation = it },
             label = { Text("Designation") }
         )
-
+    }
+    Spacer(modifier = Modifier.height(20.dp))
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center){
         Button(onClick = { viewModel.saveUser(name, age.toInt(), designation)
             name = ""
             age = ""
