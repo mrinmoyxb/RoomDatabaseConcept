@@ -1,14 +1,12 @@
-package com.example.roomdatabaseconcept.Model
+package com.example.roomdatabase.Model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-// table for room database
-@Entity(tableName = "user_table")
-data class User (
+@Entity
+data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val firstName: String,
-    val lastName: String,
+    val name: String,
     val age: Int
 )
