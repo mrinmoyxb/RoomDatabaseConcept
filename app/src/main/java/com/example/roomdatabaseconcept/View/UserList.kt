@@ -1,6 +1,7 @@
 package com.example.roomdatabaseconcept.View
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,7 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,20 +21,28 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.roomdatabase.Model.User
+import com.example.roomdatabaseconcept.ViewModel.MainViewModel
 
 @Composable
-fun UserList(userList: List<User>) {
+fun UserList(userList: List<User>, viewModel: MainViewModel) {
     Column {
         Text("Users List")
         userList.forEach { user ->
             Card(
-                modifier = Modifier.fillMaxWidth()
-                    .height(110.dp).background(Color.Transparent)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(120.dp)
+                    .background(Color.Transparent)
             ) {
                 Box(
-                    modifier = Modifier.fillMaxSize().background(Color.Black).padding(10.dp)
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black)
+                        .padding(10.dp)
                 ) {
                     Column(modifier = Modifier.fillMaxSize()) {
+                        Icon(imageVector = Icons.Filled.Delete, contentDescription = "delete",
+                            modifier = Modifier.clickable {viewModel.deleteUSer(user.id)}, tint = Color.White)
                         Text(text = "Name: ${user.name}", fontWeight = FontWeight.Medium, color = Color.White, fontSize = 20.sp)
                         Text(text = "Age: ${user.age}", fontWeight = FontWeight.Medium, color = Color.White, fontSize = 20.sp)
                         Text(text = "Age: ${user.designation}", fontWeight = FontWeight.Medium, color = Color.White, fontSize = 20.sp)

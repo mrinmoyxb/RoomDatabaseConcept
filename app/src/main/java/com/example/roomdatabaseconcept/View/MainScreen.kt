@@ -34,8 +34,8 @@ fun MainScreen() {
     {
         item{
             UserInput(viewModel = viewModel)
-            UserList(userList = userList.value)
-            DesignationList(userList = userListOfDevelopers.value)
+            UserList(userList = userList.value, viewModel)
+            DesignationList(userList = userListOfDevelopers.value, viewModel)
         }
     
     }
