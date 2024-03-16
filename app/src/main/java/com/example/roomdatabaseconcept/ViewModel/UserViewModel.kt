@@ -3,7 +3,7 @@ package com.example.roomdatabaseconcept.ViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.roomdatabase.Model.User
-import com.example.roomdatabase.Model.UserDao
+import com.example.roomdatabaseconcept.Model.UserDao
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 

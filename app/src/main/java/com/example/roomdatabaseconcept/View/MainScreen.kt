@@ -13,7 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.roomdatabase.Model.AppDatabase
+import com.example.roomdatabaseconcept.Model.AppDatabase
+import com.example.roomdatabaseconcept.View.UserInput
+import com.example.roomdatabaseconcept.View.UserList
 import com.example.roomdatabaseconcept.ViewModel.MainViewModel
 
 @Composable

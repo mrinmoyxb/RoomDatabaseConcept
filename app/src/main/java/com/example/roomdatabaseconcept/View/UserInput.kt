@@ -1,4 +1,4 @@
-package com.example.roomdatabase.View
+package com.example.roomdatabaseconcept.View
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,11 +31,14 @@ fun UserInput(viewModel: MainViewModel) {
         )
 
         OutlinedTextField(
-            value = age.toString(),
+            value = age,
             onValueChange = { age = it },
             label = { Text("Age") }
         )
-        Button(onClick = { viewModel.saveUser(name, age.toInt()) }) {
+        Button(onClick = { viewModel.saveUser(name, age.toInt())
+            name = ""
+            age = ""
+        }) {
             Text("Save User")
         }
     }

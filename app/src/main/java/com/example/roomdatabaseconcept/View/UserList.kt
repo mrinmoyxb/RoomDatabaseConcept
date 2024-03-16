@@ -1,4 +1,4 @@
-package com.example.roomdatabase.View
+package com.example.roomdatabaseconcept.View
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
