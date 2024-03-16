@@ -9,9 +9,9 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(private val userDao: UserDao) : ViewModel() {
 
-    fun saveUser(name: String, age: Int) {
+    fun saveUser(name: String, age: Int, designation: String) {
         viewModelScope.launch {
-            userDao.insertUser(User(0, name, age))
+            userDao.insertUser(User(0, name, age, designation))
         }
     }
 
